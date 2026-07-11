@@ -1,0 +1,221 @@
+/* ============================================================
+   Muscu Tracker — design system (clair, rose, Inter)
+   Inspiré de la maquette "Minimalist Fitness App"
+   ============================================================ */
+@font-face{
+  font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap;
+  src:url('../fonts/inter.woff2') format('woff2');
+}
+
+:root{
+  --bg:#F1EEF7; --card:#FFFFFF; --tile:#F5F3F9; --tile2:#EEEBF3;
+  --text:#17131F; --muted:#8B8D9B; --faint:#B9BAC6; --line:#EEEBF3;
+  --pink:#FB3F9E; --pink2:#FF74B9; --pink-strong:#E71C86; --pink-soft:#FCE4F1;
+  --pink-text:#EE2E92; --green:#16A34A;
+  --grad:linear-gradient(135deg,#FB3FA0 0%,#FF74B9 100%);
+  --shadow:0 12px 30px rgba(35,20,55,.08);
+  --shadow-sm:0 4px 16px rgba(35,20,55,.06);
+  --r:24px; --r-tile:18px; --r-btn:16px; --tap:52px;
+  --safe-top:env(safe-area-inset-top,0px); --safe-bot:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="dark"]{
+  --bg:#131019; --card:#1E1A27; --tile:#272232; --tile2:#2F2A3B;
+  --text:#F3F1F8; --muted:#9C98A9; --faint:#6C6878; --line:#2C2735;
+  --pink-soft:#3A1730; --shadow:0 12px 30px rgba(0,0,0,.35); --shadow-sm:0 4px 16px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg); color:var(--text); font-size:16px; line-height:1.4;
+  overscroll-behavior-y:none; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0}
+a{color:var(--pink-text);text-decoration:none}
+
+#app{padding:calc(18px + var(--safe-top)) 18px 100px; max-width:520px; margin:0 auto}
+
+/* ---------- En-tête d'écran ---------- */
+.screen-head{display:flex; align-items:center; gap:12px; margin-bottom:18px}
+.screen-head .back{
+  width:40px;height:40px;border:none;border-radius:12px;background:var(--card);
+  box-shadow:var(--shadow-sm);color:var(--text);font-size:22px;cursor:pointer;flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.screen-head h1{font-size:26px;font-weight:800;letter-spacing:-.02em;flex:1}
+.screen-head .head-action{color:var(--pink-text);font-weight:600;font-size:15px;background:none;border:none;cursor:pointer}
+.greet-date{color:var(--muted);font-size:14px;font-weight:500;margin-bottom:2px}
+.greet-name{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.avatar{width:52px;height:52px;border-radius:50%;background:var(--grad);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;flex:none;box-shadow:var(--shadow-sm)}
+
+/* ---------- Boutons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:var(--tap);padding:0 20px;border:none;border-radius:var(--r-btn);
+  background:var(--grad);color:#fff;font:inherit;font-size:16px;font-weight:700;
+  cursor:pointer;width:100%;box-shadow:0 8px 20px rgba(251,63,158,.28);
+}
+.btn:active{transform:translateY(1px)}
+.btn.secondary{background:var(--tile);color:var(--text);box-shadow:none}
+.btn.ghost{background:var(--card);color:var(--pink-text);box-shadow:var(--shadow-sm)}
+.btn.outline{background:var(--card);color:var(--pink-text);box-shadow:none;border:1.5px solid var(--pink);font-weight:700}
+.btn.danger{background:#fff;color:#E11D48;box-shadow:var(--shadow-sm)}
+.btn.small{min-height:42px;width:auto;padding:0 16px;font-size:14px;border-radius:12px}
+.btn-row{display:flex;gap:12px}
+
+/* ---------- Cartes ---------- */
+.card{background:var(--card);border-radius:var(--r);padding:18px;box-shadow:var(--shadow-sm);margin-bottom:14px}
+.card-title{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.card-sub{font-size:13px;color:var(--muted);margin-top:2px}
+.label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--pink-text)}
+.label.gray{color:var(--muted)}
+.section-title{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:22px 4px 10px}
+.muted{color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:44px 20px;font-size:15px}
+.row-between{display:flex;align-items:center;justify-content:space-between;gap:10px}
+
+/* ---------- Carte héro (dégradé) ---------- */
+.hero{position:relative;overflow:hidden;background:var(--grad);border-radius:var(--r);
+  padding:20px;color:#fff;box-shadow:0 14px 30px rgba(251,63,158,.32);margin-bottom:16px}
+.hero::after{content:"";position:absolute;right:-30px;top:-30px;width:150px;height:150px;
+  background:rgba(255,255,255,.13);border-radius:50%}
+.hero::before{content:"";position:absolute;right:30px;bottom:-50px;width:110px;height:110px;
+  background:rgba(255,255,255,.10);border-radius:50%}
+.hero .h-label{font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.9}
+.hero .h-title{font-size:24px;font-weight:800;margin:6px 0 4px;letter-spacing:-.02em}
+.hero .h-sub{font-size:14px;opacity:.92;margin-bottom:16px}
+.hero .h-btn{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:#fff;color:var(--pink-text);border:none;border-radius:14px;min-height:48px;width:100%;
+  font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+
+/* ---------- Grille de stats (tiles) ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tiles.three{grid-template-columns:1fr 1fr 1fr}
+.tile{background:var(--tile);border-radius:var(--r-tile);padding:16px}
+.tile .ico{width:34px;height:34px;border-radius:50%;background:var(--pink-soft);color:var(--pink-text);
+  display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px}
+.tile .t-label{font-size:12px;color:var(--muted);font-weight:500}
+.tile .t-val{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-top:2px}
+.tile .t-val small{font-size:12px;font-weight:600;color:var(--muted)}
+.tile.center{text-align:center}
+.tile.center .ico{margin:0 auto 8px}
+
+/* ---------- Stepper (poids / reps) ---------- */
+.steppers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 4px}
+.stepper{background:var(--tile);border-radius:var(--r-tile);padding:10px 8px 12px;text-align:center;min-width:0}
+.stepper .s-label{font-size:11px;color:var(--pink-text);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.stepper .s-row{display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0}
+.stepper .s-btn{width:34px;height:34px;border:none;border-radius:50%;background:var(--grad);color:#fff;
+  font-size:20px;font-weight:600;cursor:pointer;flex:none;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(251,63,158,.3)}
+.stepper .s-btn.minus{background:var(--card);color:var(--text);box-shadow:var(--shadow-sm)}
+.stepper .s-val{font-size:21px;font-weight:800;letter-spacing:-.02em;min-width:0;flex:1;width:100%;
+  background:none;border:none;text-align:center;color:var(--text);font-family:inherit;-moz-appearance:textfield}
+.stepper .s-val::-webkit-outer-spin-button,.stepper .s-val::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+
+/* ---------- Liste de séries (pills) ---------- */
+.set-list{margin-top:4px}
+.set-pill{display:flex;align-items:center;gap:12px;background:var(--tile);border-radius:14px;
+  padding:12px 14px;margin-bottom:8px}
+.set-pill .radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--faint);flex:none}
+.set-pill.done .radio{border-color:var(--pink);background:var(--pink);
+  box-shadow:inset 0 0 0 3px var(--tile)}
+.set-pill .s-name{font-weight:600;flex:1}
+.set-pill .s-perf{color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
+.set-pill.failed .s-perf{text-decoration:line-through}
+.set-pill .trend{font-size:15px;font-weight:700}
+.set-pill .trend.up{color:var(--green)} .set-pill .trend.down{color:#EF4444} .set-pill .trend.flat{color:var(--faint)}
+.set-pill .del{background:none;border:none;color:var(--faint);font-size:16px;cursor:pointer;padding:2px 4px}
+
+/* body silhouette dans la carte exo */
+.exo-card-head{display:flex;align-items:flex-start;gap:12px}
+.exo-card-head .grow{flex:1;min-width:0}
+.silhouette{width:56px;height:auto;flex:none;opacity:.95}
+
+/* progress bar séance */
+.progress{height:6px;border-radius:99px;background:var(--tile2);overflow:hidden;margin:4px 0 18px}
+.progress > i{display:block;height:100%;background:var(--grad);border-radius:99px;transition:width .3s}
+
+/* ---------- Formulaires ---------- */
+label.fld{display:block;font-size:13px;color:var(--muted);font-weight:600;margin:14px 2px 6px}
+input.inp,select.inp,textarea.inp{
+  width:100%;background:var(--card);color:var(--text);border:1.5px solid var(--line);
+  border-radius:14px;padding:14px;font:inherit;font-size:16px;box-shadow:var(--shadow-sm)}
+input.inp:focus,select.inp:focus,textarea.inp:focus{outline:none;border-color:var(--pink)}
+textarea.inp{min-height:80px;resize:vertical}
+
+/* ---------- Lignes de liste (menus profil / exos) ---------- */
+.rows{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow:hidden}
+.rows .row{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;border-bottom:1px solid var(--line)}
+.rows .row:last-child{border-bottom:none}
+.rows .row:active{background:var(--tile)}
+.rows .row .r-ico{width:36px;height:36px;border-radius:50%;background:var(--tile);color:var(--pink-text);
+  display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+.rows .row .grow{flex:1;min-width:0}
+.rows .row .r-title{font-weight:600}
+.rows .row .r-sub{font-size:13px;color:var(--muted)}
+.rows .row .chev{color:var(--faint);font-size:20px}
+.rows .row .badge{margin-left:auto}
+
+/* toggle */
+.toggle{width:50px;height:30px;border-radius:99px;background:var(--tile2);position:relative;cursor:pointer;flex:none;transition:background .2s}
+.toggle.on{background:var(--grad)}
+.toggle > i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 2px 4px rgba(0,0,0,.2)}
+.toggle.on > i{left:23px}
+
+/* ---------- Badges ---------- */
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;background:var(--tile);color:var(--muted)}
+.badge.pink{background:var(--pink-soft);color:var(--pink-text)}
+.badge.pr{background:var(--pink-soft);color:var(--pink-text);font-weight:700}
+.badge.green{background:rgba(22,163,74,.12);color:var(--green)}
+.pill-tag{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);font-weight:500}
+.pill-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pink)}
+
+/* ---------- Chips (filtres groupe musculaire) ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{padding:8px 14px;border-radius:99px;background:var(--card);box-shadow:var(--shadow-sm);
+  font-size:14px;font-weight:600;cursor:pointer;color:var(--muted)}
+.chip.active{background:var(--grad);color:#fff;box-shadow:0 6px 14px rgba(251,63,158,.28)}
+
+/* ---------- Graphiques ---------- */
+.chart{width:100%;height:150px;display:block;overflow:visible}
+.chart-x{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--muted)}
+
+/* ---------- Calendrier ---------- */
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cal-head .nav{width:38px;height:38px;border:none;border-radius:12px;background:var(--tile);color:var(--text);font-size:20px;cursor:pointer}
+.cal-head strong{font-size:17px;text-transform:capitalize}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-dow{text-align:center;font-size:11px;color:var(--muted);font-weight:600;padding:2px 0}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:12px;
+  background:var(--tile);font-size:14px;font-weight:600}
+.cal-day.trained{background:var(--grad);color:#fff;box-shadow:0 6px 12px rgba(251,63,158,.25)}
+.cal-day.empty{background:transparent}
+.cal-day.today{outline:2px solid var(--pink);outline-offset:-2px}
+
+/* ---------- Barre d'onglets ---------- */
+#tabbar{position:fixed;bottom:0;left:0;right:0;z-index:30;display:flex;justify-content:center;
+  background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);padding-bottom:var(--safe-bot)}
+.tabbar-inner{display:flex;width:100%;max-width:520px}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 2px 8px;
+  text-decoration:none;color:var(--muted);font-size:11px;font-weight:600}
+.tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tab.active{color:var(--pink-text)}
+.tab.active svg{stroke:var(--pink)}
+
+/* ---------- Overlay sélecteur ---------- */
+.overlay{position:fixed;inset:0;background:rgba(20,10,30,.45);z-index:60;display:flex;align-items:flex-end}
+.sheet{background:var(--card);width:100%;max-height:82vh;overflow:auto;border-radius:24px 24px 0 0;
+  padding:18px;max-width:520px;margin:0 auto}
+.sheet .grab{width:40px;height:4px;border-radius:99px;background:var(--line);margin:0 auto 14px}
+
+/* ---------- Toast ---------- */
+.toast{position:fixed;left:50%;bottom:calc(88px + var(--safe-bot));transform:translateX(-50%);
+  background:var(--text);color:var(--bg);padding:12px 20px;border-radius:99px;font-size:14px;font-weight:600;
+  z-index:80;box-shadow:0 10px 24px rgba(0,0,0,.25);max-width:90%}
+
+pre.export-prev{white-space:pre-wrap;font-size:12px;overflow:auto;max-height:320px;
+  font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--muted)}
